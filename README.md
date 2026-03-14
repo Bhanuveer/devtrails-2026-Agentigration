@@ -1,11 +1,11 @@
-# ⚡ ZeptoShield — AI-Powered Parametric Income Insurance
-### Guidewire DEVTrails 2026 | Team [YOUR TEAM NAME HERE]
+#  ZeptoShield — AI-Powered Parametric Income Insurance
+### Guidewire DEVTrails 2026 | Team Agentigration
 
 > *"When it rains in Pune, thousands of Zepto and Blinkit delivery partners stop earning — not by choice, but because the roads flood and the orders stop. ZeptoShield fixes that. Automatically. Instantly. Fairly."*
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 - [Quick Overview](#-quick-overview)
 - [Problem Statement](#-problem-statement)
 - [Our Solution](#-our-solution)
@@ -24,7 +24,7 @@
 
 ---
 
-## 🔍 Quick Overview
+## Quick Overview
 
 | | |
 |---|---|
@@ -37,7 +37,7 @@
 | **Tech Stack** | React.js + FastAPI (Python) + PostgreSQL + scikit-learn + Prophet |
 | **Platform** | Mobile-first responsive web app |
 
-### ⚙️ How It Works — 3 Steps
+###  How It Works — 3 Steps
 
 ```
   Step 1 → Worker pays ₹29–₹79/week
@@ -46,20 +46,20 @@
                     (Zero action required from the worker)
 ```
 
-### 🌟 What Makes ZeptoShield Different
+###  What Makes ZeptoShield Different
 
 | Feature | What It Does |
 |---------|-------------|
-| 🔔 Predictive Alert System | Warns workers every Sunday before a dangerous week arrives |
-| 📈 Transparent Dynamic Pricing | Premium adjusts weekly based on risk forecast — always notified in advance |
-| 🏆 Rewards & Coins System | Workers earn coins for consistency and honest claims — redeemable as discounts |
-| 🗣️ Vernacular Language Support | Full app in Hindi, Marathi, Tamil, and Telugu |
-| 🗺️ Hyper-Local Zone Risk Map | Live heatmap showing red/green risk zones for current and next week |
-| 📋 Claim Transparency Feed | Real-time 5-step claim status — like order tracking, but for insurance payouts |
+|  Predictive Alert System | Warns workers every Sunday before a dangerous week arrives |
+| Transparent Dynamic Pricing | Premium adjusts weekly based on risk forecast — always notified in advance |
+|  Rewards & Coins System | Workers earn coins for consistency and honest claims — redeemable as discounts |
+|  Vernacular Language Support | Full app in Hindi, Marathi, Tamil, and Telugu |
+|  Hyper-Local Zone Risk Map | Live heatmap showing red/green risk zones for current and next week |
+|  Claim Transparency Feed | Real-time 5-step claim status — like order tracking, but for insurance payouts |
 
 ---
 
-## 🚨 Problem Statement
+##  Problem Statement
 
 India's Q-Commerce delivery partners (Zepto, Blinkit, BigBasket) earn between ₹15,000–₹22,000/month. Their income is entirely dependent on one thing — being able to ride.
 
@@ -76,27 +76,27 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 
 ---
 
-## ✅ Our Solution
+##  Our Solution
 
 **ZeptoShield** is an AI-enabled Parametric Income Insurance Platform built exclusively for Zepto and Blinkit delivery partners.
 
 **How it works in 3 steps:**
-1. 🛵 Worker subscribes for **₹29–₹79/week** (auto-renews every Monday)
-2. 🌐 Our system **monitors real-time weather, AQI, and government alerts** 24/7 per zone
-3. ⚡ Threshold crossed → **claim auto-triggers → AI verifies → UPI payout in 10 minutes** — no forms, no calls
+1.  Worker subscribes for **₹29–₹79/week** (auto-renews every Monday)
+2.  Our system **monitors real-time weather, AQI, and government alerts** 24/7 per zone
+3.  Threshold crossed → **claim auto-triggers → AI verifies → UPI payout in 10 minutes** — no forms, no calls
 
 > **What is Parametric Insurance?**
 > It pays automatically when a measurable real-world event — like rainfall exceeding 50mm — crosses a defined threshold. The event itself is the proof. Zero paperwork. Zero waiting. Zero manual claims.
 
 **Coverage scope:**
-- ✅ Lost daily income due to external disruptions
-- ❌ NOT health or medical insurance
-- ❌ NOT vehicle repair or damage
-- ❌ NOT accident or life insurance
+- Lost daily income due to external disruptions
+- NOT health or medical insurance
+- NOT vehicle repair or damage
+- NOT accident or life insurance
 
 ---
 
-## 👤 Persona & Scenarios
+##  Persona & Scenarios
 
 ### Primary Persona
 
@@ -119,22 +119,22 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 
 ### 📖 Real-World Scenarios
 
-#### Scenario 1 — Heavy Rain 🌧️
+#### Scenario 1 — Heavy Rain 
 > *It is July in Pune. IMD issues a Red Alert — rainfall exceeds 65mm in Ramesh's zone (Kothrud). Zepto suspends deliveries for 2 days. Ramesh stands to lose ₹1,400.*
 >
 > **ZeptoShield Response:** Three days earlier, Ramesh received a Predictive Alert warning him about incoming heavy rain. When the 50mm threshold is crossed, the system auto-triggers a claim, runs AI fraud verification, and sends ₹800 to his UPI within 10 minutes — on both affected days. No action needed from Ramesh.
 
-#### Scenario 2 — AQI Emergency 😷
+#### Scenario 2 — AQI Emergency 
 > *November in Delhi. AQI crosses 350 in Ramesh's zone (Dwarka). The government issues an outdoor work advisory. Ramesh cannot safely work for 3 days.*
 >
-> **ZeptoShield Response:** AQI threshold (> 300) crossed → Claim auto-triggered for all eligible workers in the zone → AI verification passed → ₹700/day credited for 3 days = **₹2,100 total payout**. The Claim Transparency Feed updates every step in real time: Trigger Detected → Claim Initiated → AI Verified → Payout Sent ✅
+> **ZeptoShield Response:** AQI threshold (> 300) crossed → Claim auto-triggered for all eligible workers in the zone → AI verification passed → ₹700/day credited for 3 days = **₹2,100 total payout**. The Claim Transparency Feed updates every step in real time: Trigger Detected → Claim Initiated → AI Verified → Payout Sent 
 
-#### Scenario 3 — Sudden Curfew 🚧
+#### Scenario 3 — Sudden Curfew 
 > *An unannounced 24-hour curfew is imposed in Ramesh's area due to a local political event. All deliveries halt immediately.*
 >
 > **ZeptoShield Response:** Official curfew notification detected → Same-day income replacement of ₹650 sent to Ramesh's UPI instantly. He also earns **25 ZeptoShield Coins** for holding an active policy during a verified disruption — redeemable as a discount on next week's premium.
 
-#### Scenario 4 — Dangerous Week Forecast 🔴
+#### Scenario 4 — Dangerous Week Forecast 
 > *The forecasting model identifies that 4 days of heavy rain are predicted for Ramesh's zone next week.*
 >
 > **ZeptoShield Response:** Every Sunday, Ramesh receives a Predictive Alert: *"Heavy rain is forecast in your delivery zone for 4 days next week. Your ZeptoShield policy is active — your income is protected. This week's adjusted premium is ₹58."* Ramesh can plan his week, manage expenses, and inform his family — before a single drop falls.
@@ -147,11 +147,11 @@ Our system monitors **5 disruption triggers** in real time, mapped to each worke
 
 | # | Trigger | Data Source | Threshold | Daily Payout |
 |---|---------|-------------|-----------|--------------|
-| 1 | 🌧️ Heavy Rain / Flood | OpenWeatherMap API + IMD | > 50mm rainfall/day in worker's zone | ₹400/day |
-| 2 | 🌡️ Extreme Heat | OpenWeatherMap API | Feels-like temperature > 45°C | ₹300/day |
-| 3 | 😷 Severe AQI Alert | CPCB / AQI India API | AQI > 300 (Severe category) | ₹350/day |
-| 4 | 🚧 Government Curfew / Bandh | Government Alert API (mocked) | Official curfew notification issued | ₹500/day |
-| 5 | 🌊 Flash Flood Warning | IMD Alert Feed (mocked) | Red or Orange flood alert issued | ₹450/day |
+| 1 |  Heavy Rain / Flood | OpenWeatherMap API + IMD | > 50mm rainfall/day in worker's zone | ₹400/day |
+| 2 |  Extreme Heat | OpenWeatherMap API | Feels-like temperature > 45°C | ₹300/day |
+| 3 |  Severe AQI Alert | CPCB / AQI India API | AQI > 300 (Severe category) | ₹350/day |
+| 4 |  Government Curfew / Bandh | Government Alert API (mocked) | Official curfew notification issued | ₹500/day |
+| 5 |  Flash Flood Warning | IMD Alert Feed (mocked) | Red or Orange flood alert issued | ₹450/day |
 
 **Automated trigger pipeline:**
 ```
@@ -170,19 +170,19 @@ Claim approved → Payout initiated via Razorpay UPI → Worker notified
 
 ---
 
-## 💸 Weekly Premium Model
+##  Weekly Premium Model
 
 ZeptoShield uses a **weekly subscription model** because delivery partners earn and budget week to week. A weekly premium of ₹29–₹79 is a low-friction decision that aligns with how workers actually manage money.
 
-### 📊 Plan Tiers
+### Plan Tiers
 
 | Plan | Weekly Premium | Max Daily Payout | Max Weekly Coverage |
 |------|---------------|-----------------|---------------------|
-| 🥉 Basic | ₹29 / week | ₹300 / day | ₹900 / week |
-| 🥈 Standard | ₹49 / week | ₹450 / day | ₹1,350 / week |
-| 🥇 Premium | ₹79 / week | ₹650 / day | ₹1,950 / week |
+|  Basic | ₹29 / week | ₹300 / day | ₹900 / week |
+|  Standard | ₹49 / week | ₹450 / day | ₹1,350 / week |
+|  Premium | ₹79 / week | ₹650 / day | ₹1,950 / week |
 
-### 🤖 AI Dynamic Pricing Formula
+### AI Dynamic Pricing Formula
 
 The weekly premium is **not fixed** — it recalculates every Monday based on real-time and historical factors:
 
@@ -198,11 +198,11 @@ Final Premium = Base Premium
 
 **Example Calculations:**
 
-> 📍 Ramesh — Pune, July (monsoon peak, dangerous week forecast):
+>  Ramesh — Pune, July (monsoon peak, dangerous week forecast):
 > Base ₹49 + Zone +₹8 + Forecast +₹10 − Loyalty −₹5 − Login −₹3
 > **Final = ₹59/week** ← Worker notified every Sunday with full breakdown
 
-> 📍 Ramesh — Pune, February (dry season, safe forecast):
+>  Ramesh — Pune, February (dry season, safe forecast):
 > Base ₹49 − Zone −₹6 − Forecast −₹5 − Loyalty −₹5 − Login −₹3
 > **Final = ₹30/week** ← Lower risk, consistent behaviour rewarded
 
@@ -210,17 +210,17 @@ Every premium change is communicated in advance — no surprises, no hidden char
 
 ---
 
-## 🤖 AI / ML Integration
+##  AI / ML Integration
 
 Three distinct ML systems form the intelligence core of ZeptoShield.
 
-### 1. 💰 Dynamic Premium Calculation
+### 1.  Dynamic Premium Calculation
 - **Algorithm:** Random Forest Regressor
 - **Input Features:** Worker zone, historical disruption frequency, 7-day weather forecast, claim history, seasonality, weekly login consistency
 - **Output:** Recommended weekly premium (₹)
 - **Training Data:** Historical IMD weather data + simulated disruption events
 
-### 2. 🔍 Fraud Detection System
+### 2.  Fraud Detection System
 - **Algorithm:** Isolation Forest (Unsupervised Anomaly Detection)
 - **Checks performed on every claim:**
   - GPS activity data during the claimed disruption window
@@ -232,7 +232,7 @@ Three distinct ML systems form the intelligence core of ZeptoShield.
   - Worker was not logged into the Zepto platform during the claimed period
   - Unusually high cluster of claims from one zone without matching API data
 
-### 3. 📡 Predictive Risk Forecasting
+### 3.  Predictive Risk Forecasting
 - **Algorithm:** Time Series Forecasting — Facebook Prophet
 - **Output:** Weekly disruption probability score per zone (0–100%)
 - **Use Case 1:** Sends Predictive Alerts to workers every Sunday before high-risk weeks
@@ -241,30 +241,30 @@ Three distinct ML systems form the intelligence core of ZeptoShield.
 
 ---
 
-## 🔵 Core Features
+##  Core Features
 
 | # | Feature | Description |
 |---|---------|-------------|
-| 1 | ⚡ **Quick Onboarding** | Phone OTP + Pincode + Zepto Partner ID — complete in under 2 minutes |
-| 2 | 🧠 **AI Risk Profiling** | Personalised zone risk score generated instantly after onboarding |
-| 3 | 📋 **3 Weekly Plans** | Basic / Standard / Premium — recommended plan highlighted based on risk profile |
-| 4 | 📈 **Dynamic ML Pricing** | Premium auto-recalculates every Monday using 6 real-time factors |
-| 5 | 🌐 **5 Parametric Triggers** | Rain, Heat, AQI, Curfew, Flood — monitored 24/7 per worker zone |
-| 6 | 🤖 **Zero-Touch Claims** | System auto-files and approves the claim the moment a trigger is detected |
-| 7 | 🔍 **AI Fraud Detection** | GPS + platform login cross-check catches anomalous claims silently |
-| 8 | 💸 **Instant UPI Payout** | Approved payout reaches worker's UPI account in under 10 minutes |
-| 9 | 📊 **Worker Dashboard** | Active policy, earnings protected, claim history, coins balance |
-| 10 | 🏢 **Admin Dashboard** | Claim ratios, zone risk analytics, payout forecasting, fraud flag summary |
+| 1 |  **Quick Onboarding** | Phone OTP + Pincode + Zepto Partner ID — complete in under 2 minutes |
+| 2 |  **AI Risk Profiling** | Personalised zone risk score generated instantly after onboarding |
+| 3 |  **3 Weekly Plans** | Basic / Standard / Premium — recommended plan highlighted based on risk profile |
+| 4 |  **Dynamic ML Pricing** | Premium auto-recalculates every Monday using 6 real-time factors |
+| 5 |  **5 Parametric Triggers** | Rain, Heat, AQI, Curfew, Flood — monitored 24/7 per worker zone |
+| 6 |  **Zero-Touch Claims** | System auto-files and approves the claim the moment a trigger is detected |
+| 7 |  **AI Fraud Detection** | GPS + platform login cross-check catches anomalous claims silently |
+| 8 |  **Instant UPI Payout** | Approved payout reaches worker's UPI account in under 10 minutes |
+| 9 |  **Worker Dashboard** | Active policy, earnings protected, claim history, coins balance |
+| 10 |  **Admin Dashboard** | Claim ratios, zone risk analytics, payout forecasting, fraud flag summary |
 
 ---
 
-## 🌟 Innovative Features
+##  Innovative Features
 
 Six features that go beyond the standard brief — built to address the real barriers that prevent delivery workers from trusting and using financial products.
 
 ---
 
-### 1. 🔔 Predictive Alert System
+### 1.  Predictive Alert System
 
 **What it does:** Instead of reacting after a disruption, ZeptoShield predicts dangerous periods in advance and notifies workers proactively — every Sunday before the week begins.
 
@@ -278,7 +278,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-### 2. 📈 Dangerous Week Premium Warning
+### 2.  Dangerous Week Premium Warning
 
 **What it does:** When the AI predicts a high-risk week ahead, the premium increases by up to +₹10 — but the worker is **always notified in advance every Sunday** with a clear explanation. No surprises, ever.
 
@@ -292,7 +292,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-### 3. 🏆 Rewards & Coins System
+### 3.  Rewards & Coins System
 
 **What it does:** Workers earn **ZeptoShield Coins** for consistent, honest engagement — redeemable as premium discounts.
 
@@ -300,12 +300,12 @@ Six features that go beyond the standard brief — built to address the real bar
 
 | Activity | Coins Earned |
 |----------|-------------|
-| 📱 Log in to the app each week | 10 coins/week |
-| 📅 Maintain active policy for 4 consecutive weeks | 50 coins (one-time bonus) |
-| ⚡ Hold active policy during a verified disruption | 25 coins |
-| 👥 Refer a fellow delivery partner | 100 coins |
-| ✅ Complete profile to 100% | 20 coins |
-| 🛡️ Maintain clean claim history for 6 months | 75 coins |
+|  Log in to the app each week | 10 coins/week |
+|  Maintain active policy for 4 consecutive weeks | 50 coins (one-time bonus) |
+|  Hold active policy during a verified disruption | 25 coins |
+|  Refer a fellow delivery partner | 100 coins |
+|  Complete profile to 100% | 20 coins |
+|  Maintain clean claim history for 6 months | 75 coins |
 
 **How to redeem:**
 - 100 coins = ₹5 off next week's premium
@@ -315,16 +315,16 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-### 4. 🗣️ Vernacular Language Support
+### 4.  Vernacular Language Support
 
 **What it does:** The entire app — onboarding, dashboard, alerts, notifications, and claim feed — is available in regional Indian languages from the very first screen.
 
 **Languages supported:**
-- 🇮🇳 Hindi (primary — widest reach)
-- 🇮🇳 Marathi (Pune / Mumbai delivery zones)
-- 🇮🇳 Tamil (Chennai / Coimbatore zones)
-- 🇮🇳 Telugu (Hyderabad zones)
-- 🇮🇳 English (default fallback)
+- Hindi (primary — widest reach)
+- Marathi (Pune / Mumbai delivery zones)
+- Tamil (Chennai / Coimbatore zones)
+- Telugu (Hyderabad zones)
+- English (default fallback)
 
 **Implementation:** React i18next library handles all language switching. Worker selects preferred language at first launch — saved and applied consistently to every screen, notification, and communication.
 
@@ -332,15 +332,15 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-### 5. 🗺️ Hyper-Local Zone Risk Map
+### 5.  Hyper-Local Zone Risk Map
 
 **What it does:** A live, interactive city heatmap showing current and upcoming disruption risk levels across all active delivery zones — updated in real time from weather and AQI data.
 
 **What workers see:**
 - Their current registered zone highlighted on the map
-- 🔴 Red zones — High disruption risk (heavy rain / AQI / flood predicted or active)
-- 🟡 Orange zones — Moderate risk, caution advised
-- 🟢 Green zones — Safe, low disruption probability
+-  Red zones — High disruption risk (heavy rain / AQI / flood predicted or active)
+-  Orange zones — Moderate risk, caution advised
+-  Green zones — Safe, low disruption probability
 - Toggle between "This Week" and "Next Week" forecast view
 
 **What admin / insurer sees:**
@@ -354,27 +354,27 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-### 6. 📋 Claim Transparency Feed
+### 6.  Claim Transparency Feed
 
 **What it does:** Workers see a real-time, step-by-step status feed of exactly what is happening with their claim — similar to how food delivery apps show order tracking, but for insurance payouts.
 
 **What the feed looks like:**
 ```
-✅ Step 1 — Trigger Detected
+ Step 1 — Trigger Detected
    Rainfall of 68mm recorded in your zone (Kothrud, Pune) at 2:30 PM.
    Your 50mm policy threshold has been crossed.
 
-✅ Step 2 — Claim Initiated
+ Step 2 — Claim Initiated
    Your claim was automatically created at 2:31 PM.
    Reference: ZS-2026-07-082
 
-✅ Step 3 — AI Verification Complete
+ Step 3 — AI Verification Complete
    Activity data reviewed. No anomalies detected. Claim approved at 2:33 PM.
 
-✅ Step 4 — Payout Processing
+ Step 4 — Payout Processing
    ₹400 is being transferred to your registered UPI ID at 2:34 PM.
 
-✅ Step 5 — Payout Sent 🎉
+ Step 5 — Payout Sent 
    ₹400 credited to ****1234 at 2:41 PM.
    +25 ZeptoShield Coins earned for active coverage during this disruption.
 ```
@@ -383,9 +383,9 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
-### 🖥️ Frontend
+###  Frontend
 | Technology | Purpose |
 |-----------|---------|
 | React.js (Vite) | UI framework |
@@ -396,7 +396,7 @@ Six features that go beyond the standard brief — built to address the real bar
 | Leaflet.js | Interactive hyper-local zone risk heatmap |
 | i18next + react-i18next | Five-language localisation across all screens |
 
-### ⚙️ Backend
+###  Backend
 | Technology | Purpose |
 |-----------|---------|
 | FastAPI (Python) | High-performance REST API framework |
@@ -407,7 +407,7 @@ Six features that go beyond the standard brief — built to address the real bar
 | JWT + OAuth2 | Authentication and session management |
 | Firebase Cloud Messaging | Push notifications for alerts and payout confirmations |
 
-### 🧠 AI / ML
+###  AI / ML
 | Technology | Purpose |
 |-----------|---------|
 | scikit-learn | Random Forest (premium model) + Isolation Forest (fraud detection) |
@@ -415,7 +415,7 @@ Six features that go beyond the standard brief — built to address the real bar
 | Prophet (Meta) | Weekly zone disruption risk time-series forecasting |
 | Joblib | ML model serialisation and loading within FastAPI |
 
-### 🌐 External APIs & Services
+###  External APIs & Services
 | Service | Purpose | Mode |
 |---------|---------|------|
 | OpenWeatherMap API | Real-time weather data + 7-day zone forecasts | Live — Free tier |
@@ -424,7 +424,7 @@ Six features that go beyond the standard brief — built to address the real bar
 | Government Alert API | Curfew and zone closure notifications | Simulated (mocked) |
 | Razorpay | UPI payout processing for all approved claims | Test / Sandbox mode |
 
-### 🚀 DevOps & Infrastructure
+###  DevOps & Infrastructure
 | Technology | Purpose |
 |-----------|---------|
 | GitHub | Version control and team collaboration |
@@ -433,7 +433,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-## 📱 Platform Choice
+##  Platform Choice
 
 **ZeptoShield is a Mobile-First Responsive Web Application.**
 
@@ -448,7 +448,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-## 🔄 Application Workflow
+##  Application Workflow
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -467,7 +467,7 @@ Six features that go beyond the standard brief — built to address the real bar
 │                    ↓                                            │
 │  Weekly premium paid via Razorpay UPI (sandbox)                │
 │                    ↓                                            │
-│  Policy active ✅ — Dashboard + Zone Risk Heatmap displayed    │
+│  Policy active  — Dashboard + Zone Risk Heatmap displayed    │
 └─────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────┐
@@ -493,7 +493,7 @@ Six features that go beyond the standard brief — built to address the real bar
 │                    ↓                                            │
 │  AI fraud verification — GPS + platform login cross-check      │
 │                    ↓                                            │
-│  Claim auto-approved ✅                                        │
+│  Claim auto-approved                                         │
 │                    ↓                                            │
 │  Payout sent via Razorpay UPI                                  │
 │                    ↓                                            │
@@ -507,9 +507,9 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-## 🗓️ 6-Week Development Plan
+##  6-Week Development Plan
 
-### 🌱 Phase 1 — SEED | Week 1–2 | March 4 – March 20
+###  Phase 1 — SEED | Week 1–2 | March 4 – March 20
 **Goal: Foundation, Research & Planning**
 - [x] GitHub repository created with public access and team collaboration configured
 - [x] Complete README documented — all features, flows, and technical decisions
@@ -520,11 +520,11 @@ Six features that go beyond the standard brief — built to address the real bar
 - [ ] FastAPI project skeleton initialised — routing, database connection, auth scaffolding
 - [ ] React + Vite initialised — Tailwind, React Router, i18next for all five languages configured
 
-**📦 Deliverable:** README.md + Public GitHub Repository Link + 2-Minute Strategy Video
+** Deliverable:** README.md + Public GitHub Repository Link + 2-Minute Strategy Video
 
 ---
 
-### 📈 Phase 2 — SCALE | Week 3–4 | March 21 – April 4
+###  Phase 2 — SCALE | Week 3–4 | March 21 – April 4
 **Goal: Core Working Prototype**
 - [ ] Worker onboarding flow — language selection, OTP, zone setup, plan selection (React)
 - [ ] FastAPI authentication with JWT token issuance and validation
@@ -540,11 +540,11 @@ Six features that go beyond the standard brief — built to address the real bar
 - [ ] Hindi language localisation fully operational across all screens
 - [ ] Basic coins earning logic active for primary activities
 
-**📦 Deliverable:** Working Prototype + 2-Minute Demo Video
+** Deliverable:** Working Prototype + 2-Minute Demo Video
 
 ---
 
-### 🚀 Phase 3 — SOAR | Week 5–6 | April 5 – April 17
+###  Phase 3 — SOAR | Week 5–6 | April 5 – April 17
 **Goal: Innovation Features + Full Polish + Demo Ready**
 - [ ] All 5 triggers complete — Government Curfew and Flash Flood Warning added
 - [ ] Advanced Isolation Forest fraud detection model trained and integrated
@@ -559,13 +559,13 @@ Six features that go beyond the standard brief — built to address the real bar
 - [ ] Progressive Web App configured — installable from Android home screen
 - [ ] End-to-end demo recorded — disruption simulation → AI verification → UPI payout
 
-**📦 Deliverable:** Complete Product + 5-Minute Demo Video + Pitch Deck PDF
+** Deliverable:** Complete Product + 5-Minute Demo Video + Pitch Deck PDF
 
 ---
 
-## ▶️ Demo Video
+##  Demo Video
 
-📹 **Phase 1 — Strategy Video:** [ADD YOUTUBE / GOOGLE DRIVE LINK HERE]
+ **Phase 1 — Strategy Video:** [ADD YOUTUBE / GOOGLE DRIVE LINK HERE]
 
 ---
 
@@ -573,18 +573,15 @@ Six features that go beyond the standard brief — built to address the real bar
 
 | Name | Role | GitHub |
 |------|------|--------|
-| [Member 1 Full Name] | Team Lead — Backend (FastAPI, PostgreSQL, ML Integration) | [@username] |
-| [Member 2 Full Name] | Frontend Development (React, Tailwind, Leaflet.js, i18next) | [@username] |
-| [Member 3 Full Name] | AI / ML Engineering (Fraud Detection, Premium Model, Forecasting) | [@username] |
-| [Member 4 Full Name] | Full Stack, DevOps, and Documentation | [@username] |
+| Someya sharma | Team Lead —  Frontend Development (React, Tailwind, Leaflet.js, i18next) | @Someya222 |
+| Karman Singh Chawla | Backend (FastAPI, PostgreSQL, ML Integration) | @karmansingh880-collab |
+| Bhanuveer Singh | AI / ML Engineering (Fraud Detection, Premium Model, Forecasting) | @Bhanuveer |
+| Ayush Kumar Saini | Full Stack, DevOps, and Documentation | @AayushKumar6465 |
 
 ---
 
-## 📞 Contact
+##  Contact
 
-**University:** [Your University Name]
-**Email:** [Team Contact Email Address]
+**University:** Chandigarh University
 
----
-
-*Built with ❤️ for Guidewire DEVTrails 2026 — Seed. Scale. Soar.* 🚀
+**Email:** someyasharma2209@gmail.com
