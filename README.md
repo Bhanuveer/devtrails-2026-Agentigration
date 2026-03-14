@@ -72,7 +72,7 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 - No existing product covers **lost daily income** from external disruptions
 - Filing a traditional claim requires documents and follow-ups most workers cannot manage
 
-> 💡 **20–30% of a delivery partner's monthly income is at risk** every time an external disruption hits their zone.
+> **20–30% of a delivery partner's monthly income is at risk** every time an external disruption hits their zone.
 
 ---
 
@@ -117,7 +117,7 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 
 ---
 
-### 📖 Real-World Scenarios
+###  Real-World Scenarios
 
 #### Scenario 1 — Heavy Rain 
 > *It is July in Pune. IMD issues a Red Alert — rainfall exceeds 65mm in Ramesh's zone (Kothrud). Zepto suspends deliveries for 2 days. Ramesh stands to lose ₹1,400.*
@@ -141,7 +141,7 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 
 ---
 
-## ⚡ Parametric Triggers
+##  Parametric Triggers
 
 Our system monitors **5 disruption triggers** in real time, mapped to each worker's registered pincode zone.
 
@@ -569,7 +569,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ---
 
-## 👥 Team
+##  Team
 
 | Name | Role | GitHub |
 |------|------|--------|
