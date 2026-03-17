@@ -1,4 +1,4 @@
-#  ZeptoShield — AI-Powered Parametric Income Insurance
+#  GigSure — AI-Powered Parametric Income Insurance
 ### Guidewire DEVTrails 2026 | Team Agentigration
 
 > *"When it rains in Pune, thousands of Zepto and Blinkit delivery partners stop earning — not by choice, but because the roads flood and the orders stop. ZeptoShield fixes that. Automatically. Instantly. Fairly."*
