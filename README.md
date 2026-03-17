@@ -1,7 +1,7 @@
 #  GigSure — AI-Powered Parametric Income Insurance
 ### Guidewire DEVTrails 2026 | Team Agentigration
 
-> *"When it rains in Pune, thousands of Zepto and Blinkit delivery partners stop earning — not by choice, but because the roads flood and the orders stop. ZeptoShield fixes that. Automatically. Instantly. Fairly."*
+> *"When it rains in Pune, thousands of Zepto and Blinkit delivery partners stop earning — not by choice, but because the roads flood and the orders stop. GigSure fixes that. Automatically. Instantly. Fairly."*
 
 ---
 
@@ -28,7 +28,7 @@
 
 | | |
 |---|---|
-| **Product** | ZeptoShield — Weekly Parametric Income Insurance |
+| **Product** | GigSure — Weekly Parametric Income Insurance |
 | **Persona** | Zepto & Blinkit Q-Commerce delivery partners |
 | **Problem** | Workers lose 20–30% of monthly income to external disruptions with zero protection |
 | **Solution** | Auto-detects disruptions → Auto-triggers claim → UPI payout in under 10 minutes |
@@ -46,7 +46,7 @@
                     (Zero action required from the worker)
 ```
 
-###  What Makes ZeptoShield Different
+###  What Makes GigSure Different
 
 | Feature | What It Does |
 |---------|-------------|
@@ -78,7 +78,7 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 
 ##  Our Solution
 
-**ZeptoShield** is an AI-enabled Parametric Income Insurance Platform built exclusively for Zepto and Blinkit delivery partners.
+**GigSure** built for Q-Commerce delivery partners across all platforms (Zepto, Blinkit, BigBasket and more)
 
 **How it works in 3 steps:**
 1.  Worker subscribes for **₹29–₹79/week** (auto-renews every Monday)
@@ -122,22 +122,22 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 #### Scenario 1 — Heavy Rain 
 > *It is July in Pune. IMD issues a Red Alert — rainfall exceeds 65mm in Ramesh's zone (Kothrud). Zepto suspends deliveries for 2 days. Ramesh stands to lose ₹1,400.*
 >
-> **ZeptoShield Response:** Three days earlier, Ramesh received a Predictive Alert warning him about incoming heavy rain. When the 50mm threshold is crossed, the system auto-triggers a claim, runs AI fraud verification, and sends ₹800 to his UPI within 10 minutes — on both affected days. No action needed from Ramesh.
+> **GigSure Response:** Three days earlier, Ramesh received a Predictive Alert warning him about incoming heavy rain. When the 50mm threshold is crossed, the system auto-triggers a claim, runs AI fraud verification, and sends ₹800 to his UPI within 10 minutes — on both affected days. No action needed from Ramesh.
 
 #### Scenario 2 — AQI Emergency 
 > *November in Delhi. AQI crosses 350 in Ramesh's zone (Dwarka). The government issues an outdoor work advisory. Ramesh cannot safely work for 3 days.*
 >
-> **ZeptoShield Response:** AQI threshold (> 300) crossed → Claim auto-triggered for all eligible workers in the zone → AI verification passed → ₹700/day credited for 3 days = **₹2,100 total payout**. The Claim Transparency Feed updates every step in real time: Trigger Detected → Claim Initiated → AI Verified → Payout Sent 
+> **GigSure Response:** AQI threshold (> 300) crossed → Claim auto-triggered for all eligible workers in the zone → AI verification passed → ₹700/day credited for 3 days = **₹2,100 total payout**. The Claim Transparency Feed updates every step in real time: Trigger Detected → Claim Initiated → AI Verified → Payout Sent 
 
 #### Scenario 3 — Sudden Curfew 
 > *An unannounced 24-hour curfew is imposed in Ramesh's area due to a local political event. All deliveries halt immediately.*
 >
-> **ZeptoShield Response:** Official curfew notification detected → Same-day income replacement of ₹650 sent to Ramesh's UPI instantly. He also earns **25 ZeptoShield Coins** for holding an active policy during a verified disruption — redeemable as a discount on next week's premium.
+> **GigSure Response:** Official curfew notification detected → Same-day income replacement of ₹650 sent to Ramesh's UPI instantly. He also earns **25 GigSure Coins** for holding an active policy during a verified disruption — redeemable as a discount on next week's premium.
 
 #### Scenario 4 — Dangerous Week Forecast 
 > *The forecasting model identifies that 4 days of heavy rain are predicted for Ramesh's zone next week.*
 >
-> **ZeptoShield Response:** Every Sunday, Ramesh receives a Predictive Alert: *"Heavy rain is forecast in your delivery zone for 4 days next week. Your ZeptoShield policy is active — your income is protected. This week's adjusted premium is ₹58."* Ramesh can plan his week, manage expenses, and inform his family — before a single drop falls.
+> **GigSure Response:** Every Sunday, Ramesh receives a Predictive Alert: *"Heavy rain is forecast in your delivery zone for 4 days next week. Your GigSure policy is active — your income is protected. This week's adjusted premium is ₹58."* Ramesh can plan his week, manage expenses, and inform his family — before a single drop falls.
 
 ---
 
@@ -172,7 +172,7 @@ Claim approved → Payout initiated via Razorpay UPI → Worker notified
 
 ##  Weekly Premium Model
 
-ZeptoShield uses a **weekly subscription model** because delivery partners earn and budget week to week. A weekly premium of ₹29–₹79 is a low-friction decision that aligns with how workers actually manage money.
+GigSure uses a **weekly subscription model** because delivery partners earn and budget week to week. A weekly premium of ₹29–₹79 is a low-friction decision that aligns with how workers actually manage money.
 
 ### Plan Tiers
 
@@ -212,7 +212,7 @@ Every premium change is communicated in advance — no surprises, no hidden char
 
 ##  AI / ML Integration
 
-Three distinct ML systems form the intelligence core of ZeptoShield.
+Three distinct ML systems form the intelligence core of GigSure.
 
 ### 1.  Dynamic Premium Calculation
 - **Algorithm:** Random Forest Regressor
@@ -224,12 +224,12 @@ Three distinct ML systems form the intelligence core of ZeptoShield.
 - **Algorithm:** Isolation Forest (Unsupervised Anomaly Detection)
 - **Checks performed on every claim:**
   - GPS activity data during the claimed disruption window
-  - Zepto platform login status during disruption period (simulated)
+  - delivery platform login status during disruption period (simulated)
   - Worker's claim frequency vs. historical average
   - Zone-level claim pattern — flags suspicious cluster behaviour
 - **Red flags raised when:**
   - Worker claims disruption but GPS shows active movement in the city
-  - Worker was not logged into the Zepto platform during the claimed period
+  - Worker was not logged into the delivery platform during the claimed period
   - Unusually high cluster of claims from one zone without matching API data
 
 ### 3.  Predictive Risk Forecasting
@@ -245,7 +245,7 @@ Three distinct ML systems form the intelligence core of ZeptoShield.
 
 | # | Feature | Description |
 |---|---------|-------------|
-| 1 |  **Quick Onboarding** | Phone OTP + Pincode + Zepto Partner ID — complete in under 2 minutes |
+| 1 |  **Quick Onboarding** | Phone OTP + Pincode + Delivery Partner ID — complete in under 2 minutes |
 | 2 |  **AI Risk Profiling** | Personalised zone risk score generated instantly after onboarding |
 | 3 |  **3 Weekly Plans** | Basic / Standard / Premium — recommended plan highlighted based on risk profile |
 | 4 |  **Dynamic ML Pricing** | Premium auto-recalculates every Monday using 6 real-time factors |
@@ -266,7 +266,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ### 1.  Predictive Alert System
 
-**What it does:** Instead of reacting after a disruption, ZeptoShield predicts dangerous periods in advance and notifies workers proactively — every Sunday before the week begins.
+**What it does:** Instead of reacting after a disruption, GigSure predicts dangerous periods in advance and notifies workers proactively — every Sunday before the week begins.
 
 **How it works:**
 - Every Sunday, the forecasting model analyses the 7-day weather outlook for each pincode zone
@@ -274,7 +274,7 @@ Six features that go beyond the standard brief — built to address the real bar
 - If the next month shows an elevated disruption pattern → A monthly outlook alert is sent
 - Workers can plan rest days, manage household expenses, and inform family — before the disruption arrives
 
-**Why it matters:** Most insurance is reactive — it pays after damage is done. ZeptoShield is proactive — giving workers financial peace of mind and real planning ability before any disruption hits.
+**Why it matters:** Most insurance is reactive — it pays after damage is done. GigSure is proactive — giving workers financial peace of mind and real planning ability before any disruption hits.
 
 ---
 
@@ -294,7 +294,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ### 3.  Rewards & Coins System
 
-**What it does:** Workers earn **ZeptoShield Coins** for consistent, honest engagement — redeemable as premium discounts.
+**What it does:** Workers earn **GigSure Coins** for consistent, honest engagement — redeemable as premium discounts.
 
 **How to earn coins:**
 
@@ -366,7 +366,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
  Step 2 — Claim Initiated
    Your claim was automatically created at 2:31 PM.
-   Reference: ZS-2026-07-082
+   Reference: GS-2026-07-082
 
  Step 3 — AI Verification Complete
    Activity data reviewed. No anomalies detected. Claim approved at 2:33 PM.
@@ -376,7 +376,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
  Step 5 — Payout Sent 
    ₹400 credited to ****1234 at 2:41 PM.
-   +25 ZeptoShield Coins earned for active coverage during this disruption.
+   +25 GigSure Coins earned for active coverage during this disruption.
 ```
 
 **Why it matters:** Traditional insurance is a black box — workers have no visibility into what happens after a claim. When workers can see every step as it happens, in their own language, trust in the system follows naturally — and retention improves significantly.
@@ -435,7 +435,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ##  Platform Choice
 
-**ZeptoShield is a Mobile-First Responsive Web Application.**
+**GigSure is a Mobile-First Responsive Web Application.**
 
 **Why Web over a native app?**
 1. **No installation barrier** — Workers access via phone browser instantly, no Play Store download needed
@@ -454,12 +454,12 @@ Six features that go beyond the standard brief — built to address the real bar
 ┌─────────────────────────────────────────────────────────────────┐
 │                         ONBOARDING                              │
 │                                                                 │
-│  Worker opens ZeptoShield in phone browser                     │
+│  Worker opens GigSure in phone browser                     │
 │                    ↓                                            │
 │  Selects preferred language                                     │
 │  [ Hindi / Marathi / Tamil / Telugu / English ]                 │
 │                    ↓                                            │
-│  Phone OTP verification → Zone pincode + Zepto Partner ID       │
+│  Phone OTP verification → Zone pincode + Delivery Partner ID       │
 │                    ↓                                            │
 │  AI Risk Profile generated — zone risk score calculated         │
 │                    ↓                                            │
@@ -573,7 +573,7 @@ Six features that go beyond the standard brief — built to address the real bar
 
 | Name | Role | GitHub |
 |------|------|--------|
-| Someya sharma | Team Lead —  Frontend Development (React, Tailwind, Leaflet.js, i18next) | @Someya222 |
+| Someya Sharma | Team Lead —  Frontend Development (React, Tailwind, Leaflet.js, i18next) | @Someya222 |
 | Karman Singh Chawla | Backend (FastAPI, PostgreSQL, ML Integration) | @karmansingh880-collab |
 | Bhanuveer Singh | AI / ML Engineering (Fraud Detection, Premium Model, Forecasting) | @Bhanuveer |
 | Ayush Kumar Saini | Full Stack, DevOps, and Documentation | @AayushKumar6465 |
