@@ -744,6 +744,8 @@ These metrics will be tracked in the admin dashboard from Phase 2 onwards and re
 
 **Phase 1 — Strategy Video:** https://youtu.be/-w1VRSD8goQ
 
+**Phase 1 - Figma Prototype:** https://www.figma.com/proto/jAHJ23T9mxliY3U3mbsynT/DevTrail-prototype?node-id=0-1&t=jwTHHpgoZrR8HEdJ-1
+
 ---
 
 ## 📣 Social Media
