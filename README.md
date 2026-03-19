@@ -78,7 +78,7 @@ When external disruptions hit — heavy rain, floods, dangerous air quality, or 
 
 ##  Our Solution
 
-**GigSure** built for Q-Commerce delivery partners across all platforms (Zepto, Blinkit, BigBasket and more)
+**GigSure** is an AI-enabled Parametric Income Insurance Platform built for Q-Commerce delivery partners across all platforms (Zepto, Blinkit, BigBasket and more)
 
 **How it works in 3 steps:**
 1.  Worker subscribes for **₹29–₹79/week** (auto-renews every Monday)
@@ -514,7 +514,7 @@ Six features that go beyond the standard brief — built to address the real bar
 - [x] GitHub repository created with public access and team collaboration configured
 - [x] Complete README documented — all features, flows, and technical decisions
 - [x] Team roles assigned
-- [ ] UI/UX wireframes in Figma — all screens including heatmap and claim transparency feed
+- [x] UI/UX wireframes in Figma — all screens including heatmap and claim transparency feed
 - [ ] Database schema designed — workers, policies, claims, coins, zones, alerts
 - [ ] Project folder architecture established in repository
 - [ ] FastAPI project skeleton initialised — routing, database connection, auth scaffolding
@@ -565,7 +565,11 @@ Six features that go beyond the standard brief — built to address the real bar
 
 ##  Demo Video
 
- **Phase 1 — Strategy Video:** [ADD YOUTUBE / GOOGLE DRIVE LINK HERE]
+ **Phase 1 — Strategy Video:** https://youtu.be/-w1VRSD8goQ
+
+ ## 📣 Social Media
+
+ **Phase 1 — LinkedIn Post:** https://www.linkedin.com/posts/bhanuveer-singh-1368651b5_devtrails2026-devtrails-guidewire-ugcPost-7440387059355398146-PcLO?utm_source=share&utm_medium=member_desktop&rcm=ACoAADIjeHoB4uxGR4c3tFcsX4017hpKeFhkysc
 
 ---
 
