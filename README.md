@@ -20,6 +20,7 @@
 - [Platform Choice](#-platform-choice)
 - [Application Workflow](#-application-workflow)
 - [Regulatory Compliance & Market Crash Preparedness](#-regulatory-compliance--market-crash-preparedness)
+- [Adversarial Defense & Anti-Spoofing Strategy](#-adversarial-defense--anti-spoofing-strategy)
 - [6-Week Development Plan](#-6-week-development-plan)
 - [Demo Video](#-demo-video)
 - [Team](#-team)
@@ -664,6 +665,175 @@ The DEVTrails competition includes Market Crash events — sudden regulatory com
 
 ---
 
+##  Adversarial Defense & Anti-Spoofing Strategy
+
+A coordinated fraud ring of 500+ delivery workers using GPS-spoofing applications is not a theoretical risk — it is a documented attack vector that has already drained liquidity pools on beta parametric insurance platforms. GigSure's defense architecture is built on one foundational principle: **GPS coordinates are never trusted as the sole source of truth.**
+
+Our response operates across three defensive layers — Device Verification, Behavioural Analysis, and Zone-Level Pattern Detection — combined with a Honest Worker Protection framework that ensures genuine workers are never unfairly penalised.
+
+---
+
+### The Full Defense Flow
+
+```
+Claim received from worker
+          ↓
+LAYER 1: Device Verification
+Mock GPS flag? Cell tower mismatch? CPU/Battery anomaly?
+          ↓
+LAYER 2: Behavioural Analysis
+Trust Score check? Platform login? Temporal spike?
+          ↓
+LAYER 3: Zone Pattern Detection
+Community validation? Honeypot trigger? Prophet mismatch?
+          ↓
+          ├── All signals clean
+          │   → Auto Approve → Full payout in 10 minutes ✅
+          │
+          ├── 1–2 ambiguous signals
+          │   → Weather Corroboration check
+          │   → IMD + Traffic + News confirm disruption?
+          │   → Yes: Full payout in 15 minutes ✅
+          │   → No: 50% Partial Payout + Soft verification prompt
+          │
+          └── Multiple strong fraud signals
+              → Claim held → Appeal Dashboard shown to worker
+              → 2-hour manual review
+              → Innocent: Full payout + 50 GigSure Coins 🎉
+              → Fraud confirmed: Account suspended 🚫
+```
+
+---
+
+### Layer 1 — Device Verification
+
+Simple GPS coordinates can be spoofed in seconds using freely available Android applications. However, spoofing GPS while simultaneously faking every other device signal is computationally and technically far more difficult. GigSure checks the following device-level signals on every claim:
+
+| Signal | What It Detects | Genuine Worker | GPS Spoofer |
+|--------|----------------|----------------|-------------|
+| `mock_provider_flag` | Android's built-in `Location.isFromMockProvider()` API — directly reports if a fake GPS app is active | OFF | ON — instant hard flag |
+| `cell_tower_location` | Network-derived position from carrier triangulation, cross-referenced against GPS | Matches GPS within 1km | Diverges by 3km+ — GPS is fake |
+| `accelerometer_variance` | Movement intensity from device motion sensors | Near zero — worker is stationary at home | Abnormal — spoofing apps cause sensor inconsistencies |
+| `cpu_usage_percentile` | Background processing load | Low — phone is idle | Elevated — spoofing app consumes CPU continuously |
+| `battery_drain_rate` | Power consumption during claim window | Normal idle drain | Accelerated — active spoofing process running |
+| `location_history_continuity` | Physical plausibility of movement between GPS readings | Smooth, natural movement | Teleportation — impossible jumps between coordinates |
+
+> **Key insight:** Android's `isFromMockProvider()` API cannot itself be spoofed without root access. The vast majority of delivery workers use unrooted consumer Android devices. This single check eliminates a large proportion of GPS spoofing attempts immediately.
+
+---
+
+### Layer 2 — Behavioural Analysis
+
+A fraudster can fake their GPS location. They cannot easily fake weeks of consistent delivery behaviour. GigSure builds a behavioural baseline for every worker over their first 30 days on the platform and flags deviations at the time of any claim.
+
+**Worker Trust Score System**
+
+Every worker has a Trust Score that starts at 40 and builds over time through honest, consistent behaviour. This score directly influences how much verification friction is applied to their claim.
+
+| Trust Score Range | Who They Are | Verification Applied |
+|------------------|-------------|---------------------|
+| 0–40 | New account (under 7 days) | Strict — all signals verified |
+| 41–65 | Developing history (1–4 weeks) | Standard — ambiguous signals reviewed |
+| 66–85 | Established worker (1–3 months) | Light — only strong fraud signals flagged |
+| 86–100 | Long-term trusted worker (3+ months, clean history) | Minimal — near auto-approve |
+
+Trust Score increases through: consistent weekly logins, clean claim history, policy renewals, and verified genuine disruption claims. It decreases through: flagged anomalies, failed verifications, and account behaviour matching known fraud patterns.
+
+This concept mirrors the **No Claim Bonus** structure used in traditional insurance — rewarding honest, long-term customers with lower friction and better terms.
+
+**Additional Behavioural Signals:**
+
+| Signal | Genuine Worker | Fraud Actor |
+|--------|---------------|------------|
+| `platform_login_status` | Logged out — no orders being accepted during disruption | Logged in — actively accepting orders while claiming disruption |
+| `last_order_timestamp` | Last delivery was before the disruption event began | No delivery history — account created specifically to claim |
+| `historical_home_zone` | Claimed disruption zone matches established home pincode | Claimed zone is 10–20km from device's actual historical location |
+| `claim_submission_latency` | Filed gradually, naturally | Filed within seconds of trigger — coordinated group behaviour |
+
+---
+
+### Layer 3 — Zone-Level Pattern Detection
+
+Individual fraud is difficult to detect with certainty. Coordinated fraud rings of 500 workers are mathematically impossible to hide. GigSure monitors zone-level aggregate patterns that expose syndicate behaviour even when individual device signals appear clean.
+
+**Temporal Spike Detection**
+
+A genuine disruption produces gradual, natural claim accumulation as workers realise they cannot operate. A coordinated fraud ring receives a Telegram message at a specific moment and all 500 members file simultaneously.
+
+```
+Genuine disruption pattern:
+8:00 AM →  5 claims
+8:30 AM → 12 claims
+9:00 AM → 28 claims
+9:30 AM → 45 claims
+← Natural gradual increase as workers realise impact
+
+Coordinated fraud ring pattern:
+8:00 AM →   0 claims
+8:01 AM → 487 claims  ← Impossible spike — Telegram trigger
+← Coordinated mass filing detected instantly
+```
+
+Any zone showing a claim velocity spike exceeding 10x the zone's 30-day average within a single 5-minute window triggers an automatic batch hold on all claims from that zone pending review.
+
+**Prophet Score vs Claim Rate Mismatch**
+
+GigSure's Prophet forecasting model generates a disruption probability score for every zone before the week begins. If the actual claim rate dramatically exceeds what the model predicted, the entire zone batch is flagged.
+
+> Example: Prophet scores Dwarka zone at 35% disruption probability. 88% of workers in the zone file claims. A 53-point gap between prediction and reality is statistically anomalous and triggers a full zone review.
+
+**Community Validation**
+
+If a zone has workers with Trust Scores above 80 who are also filing genuine claims, their verified behaviour acts as community proof for ambiguous lower-Trust-Score workers in the same zone and event window. A fraud ring composed entirely of new accounts cannot benefit from this — they have no trusted community members to vouch for the disruption.
+
+**Honeypot Zone Detection**
+
+GigSure maintains a small number of internal test pincodes that appear in the zone database as active delivery areas but are never publicly communicated to workers. These zones have no real delivery activity. Any claim filed referencing a honeypot pincode is a 100% confirmed fraud signal — a genuine worker would never know these zones exist. Accounts filing honeypot claims are immediately suspended and their referral chains are flagged for review.
+
+---
+
+### Honest Worker Protection — The UX Balance
+
+The most dangerous failure mode in fraud detection is not missing a fraudster — it is wrongly blocking a genuine worker. A delivery partner who loses income to a flood and then has their legitimate claim held by an algorithm will never trust GigSure again. Our false positive rate is capped at 5% and tracked as a live metric in the admin dashboard.
+
+**Three-Tier Response Framework:**
+
+**Tier 1 — Auto-Approved**
+All device, behavioural, and zone signals are within normal range. Worker receives full payout within 10 minutes. No friction added. Worker may not even be aware any verification occurred.
+
+**Tier 2 — Weather Corroboration + Partial Payout**
+One or two signals are ambiguous — for example, a minor GPS-cell tower discrepancy caused by network congestion during heavy rain, or slightly elevated CPU from a weather app running in the foreground.
+
+For Tier 2 claims, GigSure does not block the payout. The system immediately cross-references four external sources:
+- IMD Red/Orange alert status for the worker's pincode
+- Google Maps / traffic API showing abnormal congestion in the zone
+- Local news API for flood or curfew mentions in the area
+- Nearby weather station rainfall readings
+
+If three of four external sources confirm the disruption, the claim is upgraded to Tier 1 and the full payout is released within 15 minutes. The worker experienced zero friction.
+
+If external sources do not confirm, the system issues a **50% Partial Payout immediately** — ensuring the worker is not left with nothing — and sends a single one-tap confirmation prompt in their preferred language. One tap. Remaining 50% released within 15 minutes. No documents. No calls.
+
+> This approach recognises that genuine network signal drops are most common during exactly the weather events — heavy rain, floods — that GigSure covers. Penalising workers for network degradation caused by the very disruption they are claiming for would be a fundamental product failure.
+
+**Tier 3 — Appeal Dashboard**
+Multiple high-confidence fraud signals are present simultaneously. Claim is held for manual review. The worker is shown a transparent notification in their language: *"Your claim is under review. Our team will respond within 2 hours."* The worker is never told they are suspected of fraud — they are told their claim requires verification.
+
+If manual review clears the claim:
+- Full payout released immediately
+- 50 bonus GigSure Coins credited as compensation for the inconvenience
+- The specific signal combination that caused the false flag is fed back into the Isolation Forest model for automatic retraining — preventing the same false positive from recurring
+
+If fraud is confirmed:
+- Account suspended with a clear written explanation
+- Referral chain audited for connected fraudulent accounts
+- Event logged to the zone's fraud history for future risk scoring
+
+**The Core Principle:**
+Honest workers are GigSure's product. The fraud detection system exists to protect them — not to treat them as suspects. Every design decision in this framework prioritises worker trust above operational efficiency.
+
+---
+
 ##  6-Week Development Plan
 
 ###  Phase 1 — SEED | Week 1–2 | March 4 – March 20
@@ -761,7 +931,7 @@ These metrics will be tracked in the admin dashboard from Phase 2 onwards and re
 | Someya Sharma | Team Lead — Frontend Development (React, Tailwind, Leaflet.js, i18next) | @Someya222 |
 | Karman Singh Chawla | Backend (FastAPI, PostgreSQL, ML Integration) | @karmansingh880-collab |
 | Bhanuveer Singh | AI / ML Engineering (Fraud Detection, Premium Model, Forecasting) | @Bhanuveer |
-| Ayush Kumar Saini | Full Stack, DevOps, and Documentation | @AayushKumar6465 |
+| Aayush Kumar Saini | Full Stack, DevOps, and Documentation | @AayushKumar6465 |
 
 ---
 
