@@ -1,0 +1,38 @@
+📅 Day-by-Day Plan
+Day 1 — Aaj (March 29) — Backend Foundation
+✅ FastAPI project setup
+✅ MySQL connect karo
+✅ 3 tables banao (workers, policies, claims)
+✅ Basic APIs — register, login
+✅ Test karo Postman se
+
+Day 2 — March 30 — Core APIs
+✅ Policy creation API
+✅ Premium calculation API (ML model)
+✅ OpenWeatherMap API connect
+✅ Trigger detection logic
+
+Day 3 — March 31 — React Setup
+✅ React + Vite install
+✅ Tailwind setup
+✅ Onboarding screens banao
+✅ Backend se connect karo
+
+Day 4 — April 1 — Dashboard + Claims
+✅ Worker dashboard screen
+✅ Policy status show karo
+✅ Claim trigger simulate karo
+✅ Claim status show karo
+
+Day 5 — April 2 — Polish + Payout
+✅ Razorpay sandbox integrate
+✅ UI polish karo
+✅ End-to-end test karo
+✅ Bugs fix karo
+
+Day 6 — April 3 — Video + Submit
+✅ 2-minute demo video record
+✅ YouTube upload
+✅ README update
+✅ GitHub push
+✅ Submit!
