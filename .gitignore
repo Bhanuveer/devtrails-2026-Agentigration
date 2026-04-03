@@ -1,0 +1,45 @@
+# Private Notes
+notes
+*.notes
+private/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+ENV/
+*.egg-info/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# Docker
+.dockerignore
+
+# Git
+.git/
+.gitignore
+
+# System
+.DS_Store
+Thumbs.db
