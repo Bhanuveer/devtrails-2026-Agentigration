@@ -1,0 +1,75 @@
+# ─────────────────────────────────────────────────────────────
+# GigSure — Production Docker Compose
+# Uses pre-built images from Docker Hub
+#
+# HOW TO USE (your friend runs this):
+#   1. docker login
+#   2. docker-compose -f docker-compose.prod.yml up -d
+#   3. Open http://localhost in browser
+# ─────────────────────────────────────────────────────────────
+
+services:
+
+  # ── MySQL Database ────────────────────────────────────────
+  db:
+    image: mysql:8.0
+    container_name: gigsure-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: gigsure_root_2026
+      MYSQL_DATABASE: gigsure
+      MYSQL_USER: gigsure_user
+      MYSQL_PASSWORD: gigsure_pass123
+    # No ports exposed to host — backend connects via internal Docker network
+    # This avoids conflicts with any local MySQL installation
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - gigsure-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  # ── Backend API — pulled from Docker Hub ─────────────────
+  backend:
+    image: bhanuveer/gigsure-backend:latest
+    container_name: gigsure-backend
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: gigsure
+      DB_USER: gigsure_user
+      DB_PASSWORD: gigsure_pass123
+      SECRET_KEY: gigsure2026secretkey
+      ALGORITHM: HS256
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - gigsure-network
+    # NOTE: No volume mount here — uses the code INSIDE the image
+
+    # ── Frontend — pulled from Docker Hub ───────────────────
+  frontend:
+    image: bhanuveer/gigsure-frontend:latest
+    container_name: gigsure-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - gigsure-network
+
+volumes:
+  db_data:
+
+
+networks:
+  gigsure-network:
+    driver: bridge

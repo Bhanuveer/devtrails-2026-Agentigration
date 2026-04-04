@@ -944,3 +944,60 @@ These metrics will be tracked in the admin dashboard from Phase 2 onwards and re
 ---
 
 *Built with dedication for Guidewire DEVTrails 2026 — Seed. Scale. Soar.*
+
+## 🚀 Phase 2 — Running the Project Locally
+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- MySQL 8.0+
+
+### Backend Setup
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install fastapi uvicorn sqlalchemy pymysql \
+  python-jose passlib python-dotenv requests \
+  scikit-learn pandas numpy
+```
+
+Create `.env` file:
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=gigsure
+DB_USER=root
+DB_PASSWORD=your_password
+SECRET_KEY=gigsure2026secretkey
+OPENWEATHER_API_KEY=your_key
+
+Create MySQL database:
+```sql
+CREATE DATABASE gigsure;
+```
+
+Run backend:
+```bash
+uvicorn app.main:app --reload
+```
+API runs at: http://localhost:8000
+API Docs at: http://localhost:8000/docs
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+App runs at: http://localhost:5173
+
+### Demo Flow
+1. Register a worker
+2. Select a plan — see ML premium
+3. Dashboard → Simulate Trigger
+4. Click Heavy Rain → Claim auto-files
+5. Process UPI Payout
+6. View Claim History
+
+## 📹 Phase 2 — Demo Video
+https://www.youtube.com/watch?v=cgd86ihM6xI
