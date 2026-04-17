@@ -970,6 +970,7 @@ DB_USER=root
 DB_PASSWORD=your_password
 SECRET_KEY=gigsure2026secretkey
 OPENWEATHER_API_KEY=your_key
+GROQ_API_KEY=your_groq_api_key
 
 Create MySQL database:
 ```sql
@@ -1003,7 +1004,7 @@ App runs at: http://localhost:5173
 ---
 
 ## Pitch Deck
-[Link to your Pitch Deck will go here — e.g., Google Drive/Canva public link]
+https://drive.google.com/file/d/1AGNQXStifXi_Z3hsO5sfUYCE15ziLI7X/view?usp=sharing
 
 ---
 
