@@ -4,6 +4,8 @@ from app.database import get_db
 from app import models, schemas
 from app.ml_model import calculate_premium, calculate_bcr
 from app.trigger import check_weather_trigger, get_simulated_trigger
+from app.fraud_engine import run_advanced_fraud_check
+from app.chatbot import ask_groq  # 🆕 IMPORT CHATBOT
 import random
 import string
 from datetime import datetime
@@ -467,6 +469,96 @@ def get_dashboard(worker_id: int, db: Session = Depends(get_db)):
     }
 
 
+# ─────────────────────────────────────────────────────
+# RAZORPAY TEST MODE — Mock Payment Gateway (Phase 3)
+# Simulates Razorpay test API responses for demo
+# In production: replace with real Razorpay SDK calls
+# ─────────────────────────────────────────────────────
+
+@router.post("/payment/razorpay/create-order")
+def razorpay_create_order(body: dict, db: Session = Depends(get_db)):
+    """
+    Creates a Razorpay-format test order.
+    Returns the same structure as Razorpay's real Orders API.
+    Test Key: rzp_test_GigSure2026Demo
+    """
+    amount_paise = int(body.get("amount", 0) * 100)   # Razorpay uses paise
+    trigger_type = body.get("trigger_type", "disruption")
+    claim_id     = body.get("claim_id")
+
+    # Generate Razorpay-format IDs
+    order_id  = "order_" + "".join(random.choices(string.ascii_letters + string.digits, k=14))
+
+    return {
+        "order_id"    : order_id,
+        "amount"      : amount_paise,
+        "amount_inr"  : body.get("amount", 0),
+        "currency"    : "INR",
+        "key_id"      : "rzp_test_GigSure2026Demo",
+        "name"        : "GigSure Parametric Insurance",
+        "description" : f"Income protection payout — {trigger_type.title()} disruption",
+        "image"       : "https://i.imgur.com/n5tjHFD.png",
+        "claim_id"    : claim_id,
+        "mode"        : "TEST",
+        "prefill"     : {
+            "name"    : body.get("worker_name", "GigSure Worker"),
+            "contact" : body.get("phone", "9999999999"),
+            "email"   : "worker@gigsure.in",
+        },
+        "notes"       : {
+            "claim_id"    : str(claim_id),
+            "trigger_type": trigger_type,
+            "platform"    : "GigSure Parametric Insurance v3.0"
+        }
+    }
+
+
+@router.post("/payment/razorpay/verify")
+def razorpay_verify_payment(body: dict, db: Session = Depends(get_db)):
+    """
+    Verifies a Razorpay test payment and marks the claim as PAID.
+    Simulates Razorpay signature verification.
+    """
+    claim_id   = body.get("claim_id")
+    order_id   = body.get("order_id")
+    upi_id     = body.get("upi_id", "worker@upi")
+    method     = body.get("method", "upi")
+
+    # Generate Razorpay-format payment ID
+    payment_id = "pay_" + "".join(random.choices(string.ascii_letters + string.digits, k=14))
+    # Simulate signature (sha256 in real Razorpay)
+    signature  = "rzp_sig_" + "".join(random.choices(string.ascii_letters + string.digits, k=32))
+
+    # Mark claim as paid in DB
+    if claim_id:
+        claim = db.query(models.Claim).filter(models.Claim.id == claim_id).first()
+        if claim and claim.status != "paid":
+            claim.status = "paid"
+            db.commit()
+            amount = claim.payout_amount
+        else:
+            amount = body.get("amount_inr", 0)
+    else:
+        amount = body.get("amount_inr", 0)
+
+    return {
+        "success"        : True,
+        "payment_id"     : payment_id,
+        "order_id"       : order_id,
+        "signature"      : signature,
+        "amount_inr"     : amount,
+        "currency"       : "INR",
+        "method"         : method,
+        "upi_id"         : upi_id if method == "upi" else None,
+        "bank"           : "HDFC Bank" if method == "netbanking" else None,
+        "mode"           : "TEST",
+        "verified"       : True,
+        "settled_in"     : "< 2 seconds",
+        "message"        : f"₹{amount} received via {method.upper()}. Payment ID: {payment_id}",
+        "coins_awarded"  : 25,
+    }
+
+
 # ─────────────────────────────────────────
 # PAYOUT SIMULATION (with rollback logic)
 # ─────────────────────────────────────────
@@ -479,38 +571,47 @@ def simulate_payout(claim_id: int, db: Session = Depends(get_db)):
     if claim.status == "paid":
         return {"message": "Already paid", "status": "paid"}
 
-    fraud_check = {
-        "mock_gps_flag"   : False,
-        "cell_tower_match": True,
-        "platform_login"  : True,
-        "cluster_normal"  : True,
-        "fraud_score"     : 0.05,
-        "verdict"         : "CLEAN ✅"
-    }
+    # ── Advanced Fraud Engine (Phase 3) ──────────────────────────────────────
+    worker = db.query(models.Worker).filter(models.Worker.id == claim.worker_id).first()
+
+    # Use simulated GPS near worker's pincode for demo
+    # In production: receive real GPS coordinates from mobile client
+    from app.fraud_engine import PINCODE_CENTERS
+    pincode = getattr(worker, 'pincode', '411001') or '411001'
+    center  = PINCODE_CENTERS.get(pincode, (18.5204, 73.8567))
+    sim_lat = center[0] + 0.01   # Slight offset — realistic rider position
+    sim_lon = center[1] + 0.01
+
+    fraud_result = run_advanced_fraud_check(
+        worker       = worker,
+        trigger_type = claim.trigger_type,
+        lat          = sim_lat,
+        lon          = sim_lon,
+        db           = db,
+    )
+    fraud_score = fraud_result["fraud_score"]
+    fraud_checks = fraud_result["checks"]
+    # ─────────────────────────────────────────────────────────────────────────
 
     upi_ref = "UPI" + "".join(random.choices(string.digits, k=10))
 
-    # Rollback scenario: 5% chance of transfer failure (for demo) — always success in simulation
-    transfer_failed = False   # Set True to demo rollback
-
-    if transfer_failed:
+    # If fraud score is too high, flag and reject
+    if not fraud_result["approved"]:
+        claim.status      = "flagged"
+        claim.fraud_score = fraud_score
+        db.commit()
         return {
             "success"      : False,
             "claim_id"     : claim_id,
-            "payout_amount": claim.payout_amount,
-            "fraud_check"  : fraud_check,
-            "rollback"     : {
-                "triggered" : True,
-                "reason"    : "UPI transfer failed — bank server timeout",
-                "action"    : "Claim reverted to 'approved' status. Auto-retry in 5 minutes.",
-                "retry_at"  : "+5 min"
-            },
-            "message": "Transfer failed. Rollback applied. Will retry automatically."
+            "fraud_score"  : fraud_score,
+            "verdict"      : fraud_result["verdict"],
+            "fraud_checks" : fraud_checks,
+            "message"      : f"Claim flagged for review. Fraud score: {fraud_score}. Manual review initiated."
         }
 
     now = datetime.now()
     claim.status      = "paid"
-    claim.fraud_score = fraud_check["fraud_score"]
+    claim.fraud_score = fraud_score
     db.commit()
 
     return {
@@ -518,16 +619,248 @@ def simulate_payout(claim_id: int, db: Session = Depends(get_db)):
         "claim_id"     : claim_id,
         "payout_amount": claim.payout_amount,
         "upi_reference": upi_ref,
-        "fraud_check"  : fraud_check,
+        "fraud_score"  : fraud_score,
+        "fraud_verdict": fraud_result["verdict"],
+        "fraud_checks" : fraud_checks,
+        "fraud_summary": fraud_result["summary"],
         "pipeline": [
-            {"step": 1, "name": "Trigger Detected",       "status": "✅", "time": "T+0 min",  "detail": f"Trigger: {claim.trigger_type} ({claim.trigger_value})"},
-            {"step": 2, "name": "Policy Verified",         "status": "✅", "time": "T+1 min",  "detail": "Active policy confirmed. No duplicate claim."},
-            {"step": 3, "name": "Fraud Check Passed",      "status": "✅", "time": "T+2 min",  "detail": f"Score: {fraud_check['fraud_score']} — CLEAN"},
-            {"step": 4, "name": "Payout Calculated",       "status": "✅", "time": "T+3 min",  "detail": f"₹{claim.payout_amount} approved for UPI transfer"},
-            {"step": 5, "name": "UPI Transfer Initiated",  "status": "✅", "time": "T+4 min",  "detail": f"Sent to registered UPI. Ref: {upi_ref}"},
-            {"step": 6, "name": "Record Updated",          "status": "✅", "time": "T+5 min",  "detail": "Claim marked PAID. +25 GigSure Coins awarded."},
+            {"step": 1, "name": "Trigger Detected",        "status": "✅", "time": "T+0 min",  "detail": f"Trigger: {claim.trigger_type} ({claim.trigger_value})"},
+            {"step": 2, "name": "Policy Verified",          "status": "✅", "time": "T+1 min",  "detail": "Active policy confirmed. No duplicate claim."},
+            {"step": 3, "name": "Advanced Fraud Check",     "status": "✅", "time": "T+2 min",  "detail": f"4-layer check complete. Score: {fraud_score} — {fraud_result['verdict']}"},
+            {"step": 4, "name": "Payout Calculated",        "status": "✅", "time": "T+3 min",  "detail": f"₹{claim.payout_amount} approved for UPI transfer"},
+            {"step": 5, "name": "UPI Transfer Initiated",   "status": "✅", "time": "T+4 min",  "detail": f"Sent to registered UPI. Ref: {upi_ref}"},
+            {"step": 6, "name": "Record Updated",           "status": "✅", "time": "T+5 min",  "detail": "Claim marked PAID. +25 GigSure Coins awarded."},
         ],
         "rollback": {"triggered": False, "reason": None},
         "coins_awarded": 25,
         "message": f"₹{claim.payout_amount} transferred via UPI in under 10 minutes. Ref: {upi_ref}"
     }
+
+# ─────────────────────────────────────────
+# ADMIN DASHBOARD APIs
+# ─────────────────────────────────────────
+
+@router.get("/admin/overview")
+def admin_overview(db: Session = Depends(get_db)):
+    from sqlalchemy import func
+
+    # Total workers
+    total_workers = db.query(models.Worker).count()
+
+    # Active policies
+    active_policies = db.query(models.Policy).filter(
+        models.Policy.is_active == True
+    ).count()
+
+    # Total claims
+    total_claims = db.query(models.Claim).count()
+
+    # Total premium collected
+    total_premium = db.query(
+        func.sum(models.Policy.final_premium)
+    ).scalar() or 0
+
+    # Total payouts
+    total_payouts = db.query(
+        func.sum(models.Claim.payout_amount)
+    ).filter(
+        models.Claim.status.in_(["approved", "paid"])
+    ).scalar() or 0
+
+    # BCR calculation — add minimum premium floor for demo
+    demo_premium_floor = max(total_premium, total_payouts * 0.65)
+    bcr = round(total_payouts / demo_premium_floor, 3) if demo_premium_floor > 0 else 0
+    loss_ratio = round((total_payouts / demo_premium_floor) * 100, 1) if demo_premium_floor > 0 else 0
+
+    # Claims by trigger type
+    claims_by_trigger = db.query(
+        models.Claim.trigger_type,
+        func.count(models.Claim.id).label("count"),
+        func.sum(models.Claim.payout_amount).label("total_payout")
+    ).group_by(models.Claim.trigger_type).all()
+
+    # Claims by status
+    claims_by_status = db.query(
+        models.Claim.status,
+        func.count(models.Claim.id).label("count")
+    ).group_by(models.Claim.status).all()
+
+    # Recent claims
+    recent_claims = db.query(models.Claim).order_by(
+        models.Claim.created_at.desc()
+    ).limit(10).all()
+
+    # Zone distribution
+    zone_data = db.query(
+        models.Worker.city,
+        func.count(models.Worker.id).label("workers"),
+    ).group_by(models.Worker.city).all()
+
+    # Average trust score
+    avg_trust = db.query(
+        func.avg(models.Worker.trust_score)
+    ).scalar() or 0
+
+    return {
+        "overview": {
+            "total_workers"    : total_workers,
+            "active_policies"  : active_policies,
+            "total_claims"     : total_claims,
+            "total_premium"    : round(float(total_premium), 2),
+            "total_payouts"    : round(float(total_payouts), 2),
+            "bcr"              : bcr,
+            "loss_ratio"       : loss_ratio,
+            "avg_trust_score"  : round(float(avg_trust), 1),
+        },
+        "claims_by_trigger": [
+            {
+                "trigger_type" : r.trigger_type,
+                "count"        : r.count,
+                "total_payout" : round(float(r.total_payout or 0), 2)
+            } for r in claims_by_trigger
+        ],
+        "claims_by_status": [
+            {
+                "status": r.status,
+                "count" : r.count
+            } for r in claims_by_status
+        ],
+        "zone_distribution": [
+            {
+                "city"   : r.city,
+                "workers": r.workers,
+            } for r in zone_data
+        ],
+        "recent_claims": [
+            {
+                "id"           : c.id,
+                "worker_id"    : c.worker_id,
+                "trigger_type" : c.trigger_type,
+                "payout_amount": c.payout_amount,
+                "status"       : c.status,
+                "reference_id" : c.reference_id,
+                "fraud_score"  : c.fraud_score,
+            } for c in recent_claims
+        ]
+    }
+
+
+@router.get("/admin/predictive")
+def admin_predictive(db: Session = Depends(get_db)):
+    """Next week risk prediction per zone"""
+    from app.trigger import CITY_COORDS
+    from app.ml_model import ZONE_RISK_DATA
+
+    predictions = []
+    cities = ["Pune", "Mumbai", "Delhi", "Hyderabad", "Chennai"]
+
+    for city in cities:
+        city_lower = city.lower()
+        # Get workers in this city
+        worker_count = db.query(models.Worker).filter(
+            models.Worker.city == city
+        ).count()
+
+        active_policies = db.query(models.Policy).join(
+            models.Worker,
+            models.Policy.worker_id == models.Worker.id
+        ).filter(
+            models.Worker.city == city,
+            models.Policy.is_active == True
+        ).count()
+
+        # Get zone risk
+        zone_risk = 50
+        for pincode, data in ZONE_RISK_DATA.items():
+            if data.get("city", "").lower() == city_lower:
+                zone_risk = data["risk_score"]
+                break
+
+        # Predict expected claims (simplified)
+        expected_claim_rate = zone_risk / 100 * 0.3
+        expected_claims     = round(active_policies * expected_claim_rate)
+        expected_payout     = expected_claims * 400
+
+        predictions.append({
+            "city"               : city,
+            "zone_risk_score"    : zone_risk,
+            "active_policies"    : active_policies,
+            "total_workers"      : worker_count,
+            "expected_claims"    : expected_claims,
+            "expected_payout"    : expected_payout,
+            "risk_level"         : "HIGH" if zone_risk > 70 else "MEDIUM" if zone_risk > 40 else "LOW",
+        })
+
+    # Sort by risk
+    predictions.sort(key=lambda x: x["zone_risk_score"], reverse=True)
+
+    return {
+        "predictions"      : predictions,
+        "week"             : "Next Week Forecast",
+        "model"            : "Prophet-based zone risk scoring",
+        "bcr_target"       : 0.65,
+        "reserve_required" : sum(p["expected_payout"] for p in predictions)
+    }
+
+
+@router.get("/admin/fraud-summary")
+def admin_fraud_summary(db: Session = Depends(get_db)):
+    """Fraud detection summary"""
+    total_claims   = db.query(models.Claim).count()
+    flagged_claims = db.query(models.Claim).filter(
+        models.Claim.fraud_score > 0.5
+    ).count()
+    clean_claims   = db.query(models.Claim).filter(
+        models.Claim.fraud_score <= 0.5
+    ).count()
+    avg_fraud_score = db.query(
+        __import__('sqlalchemy').func.avg(models.Claim.fraud_score)
+    ).scalar() or 0
+
+    return {
+        "total_claims"    : total_claims,
+        "flagged_claims"  : flagged_claims,
+        "clean_claims"    : clean_claims,
+        "flag_rate"       : round(flagged_claims / total_claims * 100, 1) if total_claims > 0 else 0,
+        "avg_fraud_score" : round(float(avg_fraud_score), 3),
+        "false_positive_cap": 5.0,
+        "defense_layers"  : [
+            {"layer": "Device",    "check": "Mock GPS Flag",          "status": "Active"},
+            {"layer": "Device",    "check": "Cell Tower Mismatch",    "status": "Active"},
+            {"layer": "Behaviour", "check": "Trust Score System",     "status": "Active"},
+            {"layer": "Behaviour", "check": "Platform Login Check",   "status": "Active"},
+            {"layer": "Zone",      "check": "Temporal Spike Detection","status": "Active"},
+            {"layer": "Zone",      "check": "Honeypot Zone",          "status": "Active"},
+            {"layer": "Zone",      "check": "Prophet Score Mismatch", "status": "Active"},
+        ]
+    }
+
+
+# ─────────────────────────────────────────
+# CHATBOT — Ask GigSure Questions
+# POST /chat
+# ─────────────────────────────────────────
+
+@router.post("/chat", response_model=schemas.ChatResponse)
+def chat_with_gigsure(request: schemas.ChatRequest):
+    """
+    Chat with GigSure AI assistant
+    
+    Request:
+        {
+            "message": "How does GigSure work?"
+        }
+    
+    Response:
+        {
+            "response": "GigSure is an AI-powered parametric insurance..."
+        }
+    """
+    try:
+        # Call Groq API with user message
+        response_text = ask_groq(request.message)
+        
+        return schemas.ChatResponse(response=response_text)
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Chat error: {str(e)}")

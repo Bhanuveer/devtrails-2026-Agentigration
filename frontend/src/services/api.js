@@ -33,4 +33,13 @@ export const getDashboard   = (id)  => API.get(`/dashboard/${id}`)
 
 // ── Actuarial ─────────────────────────────
 // Returns: BCR, Loss Ratio, Stress Scenario, Formula explanation
-export const getActuarial   = (id)  => API.get(`/actuarial/${id}`)
+export const getActuarial = (id) => API.get(`/actuarial/${id}`)
+
+// admin panel
+export const getAdminOverview = () => API.get('/admin/overview')
+export const getAdminPredictive = () => API.get('/admin/predictive')
+export const getAdminFraud = () => API.get('/admin/fraud-summary')
+
+// ── Razorpay Test Mode (Phase 3) ──────────
+export const razorpayCreateOrder = (data) => API.post('/payment/razorpay/create-order', data)
+export const razorpayVerify      = (data) => API.post('/payment/razorpay/verify', data)

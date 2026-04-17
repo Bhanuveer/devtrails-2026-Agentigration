@@ -4,23 +4,23 @@ import { getDashboard, simulateTrigger, simulatePayout, getLiveTriggers, getActu
 
 // ── Trigger config ─────────────────────────────────────────────
 const TRIGGER_CONFIG = {
-    rain   : { icon: '🌧️', label: 'Heavy Rain',   color: 'from-blue-600 to-blue-800',   payout: 400, threshold: '50mm/24hr' },
-    heat   : { icon: '🌡️', label: 'Extreme Heat',  color: 'from-orange-500 to-red-600',  payout: 300, threshold: '43°C' },
-    aqi    : { icon: '😷', label: 'Severe AQI',    color: 'from-purple-600 to-purple-800', payout: 350, threshold: 'AQI 300' },
-    curfew : { icon: '🚧', label: 'Curfew/Bandh',  color: 'from-yellow-600 to-amber-700', payout: 500, threshold: 'Active Alert' },
-    flood  : { icon: '🌊', label: 'Flash Flood',   color: 'from-cyan-600 to-blue-800',   payout: 450, threshold: 'Red/Orange Alert' },
+    rain: { icon: '🌧️', label: 'Heavy Rain', color: 'from-blue-600 to-blue-800', payout: 400, threshold: '50mm/24hr' },
+    heat: { icon: '🌡️', label: 'Extreme Heat', color: 'from-orange-500 to-red-600', payout: 300, threshold: '43°C' },
+    aqi: { icon: '😷', label: 'Severe AQI', color: 'from-purple-600 to-purple-800', payout: 350, threshold: 'AQI 300' },
+    curfew: { icon: '🚧', label: 'Curfew/Bandh', color: 'from-yellow-600 to-amber-700', payout: 500, threshold: 'Active Alert' },
+    flood: { icon: '🌊', label: 'Flash Flood', color: 'from-cyan-600 to-blue-800', payout: 450, threshold: 'Red/Orange Alert' },
 }
 
 export default function Dashboard() {
-    const navigate    = useNavigate()
-    const workerId    = localStorage.getItem('worker_id')
-    const workerName  = localStorage.getItem('worker_name') || 'Worker'
+    const navigate = useNavigate()
+    const workerId = localStorage.getItem('worker_id')
+    const workerName = localStorage.getItem('worker_name') || 'Worker'
 
-    const [data, setData]           = useState(null)
+    const [data, setData] = useState(null)
     const [simResult, setSimResult] = useState(null)
-    const [payout, setPayout]       = useState(null)
+    const [payout, setPayout] = useState(null)
     const [simulating, setSimulating] = useState(null)   // which trigger is running
-    const [paying, setPaying]       = useState(false)
+    const [paying, setPaying] = useState(false)
     const [liveTriggers, setLiveTriggers] = useState(null)
     const [actuarial, setActuarial] = useState(null)
     const [activeTab, setActiveTab] = useState('simulate')  // simulate | actuarial
@@ -79,7 +79,7 @@ export default function Dashboard() {
     )
 
     const firstName = workerName.split(' ')[0]
-    const cfg       = simResult?.triggerType ? TRIGGER_CONFIG[simResult.triggerType] : null
+    const cfg = simResult?.triggerType ? TRIGGER_CONFIG[simResult.triggerType] : null
 
     return (
         <div className="min-h-screen bg-[#F1F5F9]">
@@ -96,6 +96,10 @@ export default function Dashboard() {
                         <div className="bg-[#F59E0B] text-[#0A1628] text-xs font-bold px-3 py-1 rounded-full mb-2">
                             Trust: {Math.round(data.worker.trust_score)}
                         </div>
+                        <button onClick={() => navigate('/admin')}
+                            className="text-[#38BDF8] text-xs hover:underline mr-3">
+                            Admin →
+                        </button>
                         <button onClick={() => { localStorage.clear(); navigate('/') }}
                             className="text-[#475569] text-xs hover:text-red-400">Logout</button>
                     </div>
@@ -133,21 +137,21 @@ export default function Dashboard() {
                 {/* ── Stats Row ────────────────────────────────── */}
                 <div className="grid grid-cols-3 gap-3">
                     <StatCard label="Premium" value={`₹${data.policy.final_premium || '—'}`} sub="this week" color="blue" />
-                    <StatCard label="Saved"   value={`₹${data.stats.total_saved}`}            sub="total"     color="green" />
-                    <StatCard label="Claims"  value={data.stats.total_claims}                  sub="filed"     color="amber" />
+                    <StatCard label="Saved" value={`₹${data.stats.total_saved}`} sub="total" color="green" />
+                    <StatCard label="Claims" value={data.stats.total_claims} sub="filed" color="amber" />
                 </div>
 
                 {/* ── Tab Switcher ─────────────────────────────── */}
                 <div className="flex bg-white rounded-2xl p-1 shadow-sm border border-gray-100">
                     {[
-                        { key: 'simulate',  label: '🚨 Simulate Trigger' },
+                        { key: 'simulate', label: '🚨 Simulate Trigger' },
                         { key: 'actuarial', label: '📊 Actuarial' },
                     ].map(t => (
                         <button key={t.key} onClick={() => setActiveTab(t.key)}
                             className={`flex-1 py-2 rounded-xl text-sm font-bold transition-all
                             ${activeTab === t.key
-                                ? 'bg-[#0A1628] text-white shadow'
-                                : 'text-[#64748B] hover:text-[#0A1628]'}`}>
+                                    ? 'bg-[#0A1628] text-white shadow'
+                                    : 'text-[#64748B] hover:text-[#0A1628]'}`}>
                             {t.label}
                         </button>
                     ))}
@@ -303,11 +307,11 @@ export default function Dashboard() {
 
                             <div className={`rounded-xl p-3 mb-3 text-center
                                 ${actuarial.actuarial.health === 'good' ? 'bg-green-50 border border-green-200' :
-                                  actuarial.actuarial.health === 'warning' ? 'bg-yellow-50 border border-yellow-200' :
-                                  'bg-red-50 border border-red-200'}`}>
+                                    actuarial.actuarial.health === 'warning' ? 'bg-yellow-50 border border-yellow-200' :
+                                        'bg-red-50 border border-red-200'}`}>
                                 <p className={`font-black text-2xl
                                     ${actuarial.actuarial.health === 'good' ? 'text-green-600' :
-                                      actuarial.actuarial.health === 'warning' ? 'text-yellow-600' : 'text-red-600'}`}>
+                                        actuarial.actuarial.health === 'warning' ? 'text-yellow-600' : 'text-red-600'}`}>
                                     {actuarial.actuarial.bcr === 0 ? '—' : actuarial.actuarial.bcr}
                                 </p>
                                 <p className="text-xs text-gray-500">BCR (Burning Cost Rate)</p>
@@ -395,7 +399,7 @@ export default function Dashboard() {
 
 function StatCard({ label, value, sub, color }) {
     const colors = {
-        blue : 'bg-blue-50 text-blue-600',
+        blue: 'bg-blue-50 text-blue-600',
         green: 'bg-green-50 text-green-600',
         amber: 'bg-amber-50 text-amber-600',
     }

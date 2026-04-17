@@ -945,7 +945,7 @@ These metrics will be tracked in the admin dashboard from Phase 2 onwards and re
 
 *Built with dedication for Guidewire DEVTrails 2026 — Seed. Scale. Soar.*
 
-## 🚀 Phase 2 — Running the Project Locally
+## 🚀 Running the Project Locally (Phase 3)
 
 ### Prerequisites
 - Python 3.10+
@@ -959,7 +959,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install fastapi uvicorn sqlalchemy pymysql \
   python-jose passlib python-dotenv requests \
-  scikit-learn pandas numpy
+  scikit-learn pandas numpy groq
 ```
 
 Create `.env` file:
@@ -991,13 +991,23 @@ npm run dev
 ```
 App runs at: http://localhost:5173
 
-### Demo Flow
+### Demo Flow (Phase 3)
 1. Register a worker
-2. Select a plan — see ML premium
-3. Dashboard → Simulate Trigger
-4. Click Heavy Rain → Claim auto-files
-5. Process UPI Payout
-6. View Claim History
+2. Select a plan — see ML predictive premium
+3. Dashboard → Simulate Trigger (e.g., Heavy Rain)
+4. View Transparent Claim Feed
+5. View Advanced Fraud Detection Layer (GPS Spoofing, Historical Weather)
+6. Process Mock Razorpay UPI Payout
+7. View Insurer Admin Dashboard (/admin) for KPIs & Predictive Analytics
 
-## 📹 Phase 2 — Demo Video
-https://www.youtube.com/watch?v=cgd86ihM6xI
+---
+
+## Pitch Deck
+[Link to your Pitch Deck will go here — e.g., Google Drive/Canva public link]
+
+---
+
+## 📹 Phase 3 — Final Demo Video
+[GigSure Phase 3 Delivery: Scale & Optimize Demo](https://www.youtube.com/watch?v=Sb2bUzsmg6Y)
+
+**Phase 2 — Demo Video:** https://www.youtube.com/watch?v=cgd86ihM6xI

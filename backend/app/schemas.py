@@ -60,3 +60,11 @@ class PremiumResponse(BaseModel):
     final_premium : float
     zone_risk     : float
     breakdown     : dict
+
+
+# Chatbot schemas
+class ChatRequest(BaseModel):
+    message: str
+
+class ChatResponse(BaseModel):
+    response: str
