@@ -1009,6 +1009,6 @@ https://drive.google.com/file/d/1AGNQXStifXi_Z3hsO5sfUYCE15ziLI7X/view?usp=shari
 ---
 
 ## 📹 Phase 3 — Final Demo Video
-[GigSure Phase 3 Delivery: Scale & Optimize Demo]**Phase 2 — Demo Video:** (https://www.youtube.com/watch?v=Sb2bUzsmg6Y)
+**Phase 3 — Demo Video:** [GigSure Phase 3 Delivery: Scale & Optimize Demo](https://www.youtube.com/watch?v=Sb2bUzsmg6Y)
 
 **Phase 2 — Demo Video:** https://www.youtube.com/watch?v=cgd86ihM6xI
